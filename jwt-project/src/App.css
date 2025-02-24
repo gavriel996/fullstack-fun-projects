@@ -40,12 +40,53 @@
 .read-the-docs {
   color: #888;
 }
+#input_section {
+  display: flex;
+}
+
+#encoded-title {
+  text-align: left;
+}
+
+#decoded-title {
+  text-align: left;
+}
+
+#decoded-header-title{
+  font: 18;
+}
+
+#decoded-payload-title{
+  font: 18;
+}
+
+#decoded-signature-title{
+  font: 18;
+}
+
+#result-placeholder {
+  text-align: center;
+}
+
+#result {
+  text-align: center;
+}
+
+#share-button-placeholder {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#share-button {
+  text-align: center;
+}
 
 #input_full_encoded {
-  display:inline-block;
+  display:flex;
+  flex-direction: column;
   margin-right: 10px;
   width: 400px;
-  height: 200px;
+  height: 210px;
   padding: 20px;
   /* margin-bottom: 20px; */
   border: 1px solid red;
@@ -62,9 +103,11 @@
 
 #input_full_decoded {
   position: relative;
-  display:inline-block;
+  display:flex;
+  flex-direction: column;
+  /* flex-grow: 1; */
   width: 400px;
-  height: 200px;
+  height: 210px;
   padding: 20px;
   /* margin-bottom: 20px; */
   border: 1px solid red;
@@ -86,7 +129,7 @@
 
 #input {
   width: 400px;
-  height: 200px;
+  height: 210px;
   text-align: left;
   word-wrap: fill;
   font:20px arial, helvetica;
@@ -95,26 +138,57 @@
   /* bottom: 20; */
 }
 
-
-#input_1 {
-  width: 300px;
-  height: 90px;
-  padding: 30px;
-  /* margin-bottom: 20px; */
-  border: 1px solid red;
-  text-align: center;
-  /* word-wrap: normal; */
-  word-wrap: break-word;
-  /* overflow-x: scroll; */
-  /* overflow-y: scroll; */
-}
-
 #input_first_sect {
   color: #2e6eb8;
+}
+#input_first_sect:focus {
+  outline: none !important;;
 }
 #input_second_sect {
   color: #8d1c8d;
 }
+#input_second_sect:focus {
+  outline: none !important;;
+}
 #input_third_sect {
   color: #41bb82;
+}
+#input_third_sect:focus {
+  outline: none !important;;
+}
+
+#input_decoded_header {
+  width: 400px;
+  height: 70px;
+  text-align: left;
+  word-wrap: fill;
+  font:20px arial, helvetica;
+  /* font-weight: bold; */
+  letter-spacing: 1.5px;
+  /* bottom: 20; */
+  margin-bottom: 10px;
+}
+
+#input_decoded_payload {
+  width: 400px;
+  height: 70px;
+  text-align: left;
+  word-wrap: fill;
+  font:20px arial, helvetica;
+  /* font-weight: bold; */
+  letter-spacing: 1.5px;
+  /* bottom: 20; */
+  margin-bottom: 10px;
+}
+
+#input_decoded_signature {
+  width: 400px;
+  height: 70px;
+  text-align: left;
+  word-wrap: fill;
+  font:20px arial, helvetica;
+  /* font-weight: bold; */
+  letter-spacing: 1.5px;
+  /* bottom: 20; */
+  margin-bottom: 10px;
 }

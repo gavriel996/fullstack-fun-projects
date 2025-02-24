@@ -22,12 +22,38 @@ class JwtObject {
     this.decoded_payload = this.encoded.split(".")[1]
     this.decoded_signature = this.encoded.split(".")[2]
   }
+  decode(value: string): string {
+    // let encoded = Buffer.from(JSON.stringify(value)).toString('base64')
+    
+    // var base64Url = token.split('.')[1];
+    // var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');    
+    // var jsonPayload = decodeURIComponent(window.atob(value).split('').map(function(c) {
+    //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    // }).join(''));
+
+    // return JSON.parse(jsonPayload);
+
+    return JSON.parse(atob(value));
+
+  }
+  setDecodedHeader(header: string): void {
+    this.decoded_header = header
+  }
+  setDecodedPayload(payload: string): void {
+    this.decoded_payload = payload
+  }
+  setDecodedSignature(signature: string): void {
+    this.decoded_signature = signature
+  }
+  // decode(encoded: string, algo): any {
+  // }
 }
 
 function App() {
   const [count, setCount] = useState(0)
 
   let input = new JwtObject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
+  input.setDecodedPayload(input.decode(input.decoded_payload).toString());
   return (
     <>
       <div>
@@ -47,7 +73,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <div>
+      <div id="input_section">
         <div id="input_full_encoded">
           <div id="input" contentEditable="true" >
             <span id="input_first_sect">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>
@@ -64,12 +90,12 @@ function App() {
             </span>
           </div>
           <div id="input_decoded_payload" contentEditable="true" >
-            <span id="input_first_sect">
+            <span id="input_second_sect">
             {input.decoded_payload}
             </span>
           </div>
           <div id="input_decoded_signature" contentEditable="true" >
-            <span id="input_first_sect">
+            <span id="input_third_sect">
             {input.decoded_signature}
             </span>
           </div>
