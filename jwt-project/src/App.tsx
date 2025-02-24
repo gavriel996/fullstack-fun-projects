@@ -3,9 +3,31 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+class JwtObject {
+  encoded: string;
+  decoded_header: string = "";
+  decoded_payload: string = "";
+  decoded_signature: string = "";
+ 
+  constructor(encoded: string) {
+    this.encoded = encoded;
+    this.assign_values();
+  }
+ 
+  greet() {
+    return "Hello, " + this.encoded;
+  }
+  assign_values() {
+    this.decoded_header =this.encoded.split(".")[0] // decode the proper part in each one
+    this.decoded_payload = this.encoded.split(".")[1]
+    this.decoded_signature = this.encoded.split(".")[2]
+  }
+}
+
 function App() {
   const [count, setCount] = useState(0)
 
+  let input = new JwtObject("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c")
   return (
     <>
       <div>
@@ -25,13 +47,32 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <div id="input_full">
-        <div id="input" contentEditable="true" >
-          <span id="input_first_sect">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>
-          .
-          <span id="input_second_sect">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</span>
-          .
-          <span id="input_third_sect">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+      <div>
+        <div id="input_full_encoded">
+          <div id="input" contentEditable="true" >
+            <span id="input_first_sect">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>
+            .
+            <span id="input_second_sect">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ</span>
+            .
+            <span id="input_third_sect">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+          </div>
+        </div>
+        <div id="input_full_decoded">
+          <div id="input_decoded_header" contentEditable="true" >
+            <span id="input_first_sect">
+            {input.decoded_header}
+            </span>
+          </div>
+          <div id="input_decoded_payload" contentEditable="true" >
+            <span id="input_first_sect">
+            {input.decoded_payload}
+            </span>
+          </div>
+          <div id="input_decoded_signature" contentEditable="true" >
+            <span id="input_first_sect">
+            {input.decoded_signature}
+            </span>
+          </div>
         </div>
       </div>
 
